@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:know_your_weather/screens/locationPage.dart';
-import 'package:flutter_spinkit/src/circle.dart';
+import 'package:know_your_weather/screens/location_page.dart';
 import 'package:know_your_weather/services/weather.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({Key? key}) : super(key: key);
-
   @override
   State<LoadingScreen> createState() => _LoadingScreenState();
 }
@@ -16,12 +14,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     getLocationData();
-    print("method exectuted");
   }
 
   void getLocationData() async {
     var weatherData = await WeatherModel().getLocationAndData();
-    print("Print statement:$weatherData");
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) {
@@ -32,13 +28,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueGrey,
+    return const Scaffold(
+      backgroundColor: Colors.green,
       body: Center(
-        child: SpinKitCircle(
-          color: Colors.yellow,
-          size: 50.0,
-        ),
+        child: SpinKitCircle(color: Colors.white, size: 30.0),
       ),
     );
   }
